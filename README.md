@@ -237,7 +237,8 @@ Possible future enhancements include:
 
 For the complete project documentation, including objectives, methodology, workflow, testing, learning outcomes, and future scope:
 
-👉 [View Project Report](docs/project_report.md)
+👉Project Report
+https://github.com/preetichoure9960-max/CodeAlpha_Cpp_Internship/blob/main/Task1_SmartCGPA/docs/project_report.md
 
 
 ## 🎯 Internship Details
