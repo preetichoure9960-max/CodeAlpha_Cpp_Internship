@@ -142,39 +142,6 @@ Task1_SmartCGPA/
 │
 └── README.md
 
-
-## ▶️ How to Run
-
-### 1. Clone the Repository
-
-git clone https://github.com/YOUR-USERNAME/CodeAlpha_Cpp_Internship.git
-
-
-### 2. Navigate to the Project
-
-cd CodeAlpha_Cpp_Internship/Task1_SmartCGPA
-
-
-### 3. Compile the Program
-
-Using g++:
-
-g++ src/main.cpp -o SmartCGPA
-
-
-### 4. Run the Program
-
-**Windows:**
-
-SmartCGPA.exe
-
-**Linux / macOS:**
-
-./SmartCGPA
-
-
-## 🖥️ Application Menu
-
 ========================================
           SMART CGPA ANALYZER
 ========================================
