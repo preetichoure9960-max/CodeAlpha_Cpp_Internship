@@ -3,7 +3,6 @@
 # Banking Management System
 ## CodeAlpha C++ Programming Internship – Task 4
 
----
 
 ## 1. Project Overview
 
@@ -15,7 +14,6 @@ The application is designed using Object-Oriented Programming concepts. Separate
 
 The project demonstrates how C++ can be used to model a practical real-world system using classes, objects, functions, vectors, conditional statements, loops, and input validation.
 
----
 
 # 2. Internship Task
 
@@ -35,7 +33,6 @@ The project demonstrates how C++ can be used to model a practical real-world sys
 
 **Console-Based Banking Management Application**
 
----
 
 # 3. Problem Statement
 
@@ -56,7 +53,6 @@ The system should be able to:
 - Validate banking operations.
 - Provide a simple menu-driven interface.
 
----
 
 # 4. Project Objectives
 
@@ -72,7 +68,6 @@ The main objectives of the project are:
 8. To create a structured menu-driven application.
 9. To understand how programming concepts can be applied to a real-world system.
 
----
 
 # 5. System Features
 
@@ -89,7 +84,6 @@ Users can create new customers by entering:
 
 The program checks whether the Customer ID already exists before creating a new customer.
 
----
 
 ### 5.2 Account Creation
 
@@ -105,7 +99,6 @@ The account contains:
 
 The system prevents duplicate account numbers and verifies that the customer exists.
 
----
 
 ### 5.3 Account Information
 
@@ -119,7 +112,6 @@ The system displays:
 - Account type
 - Current balance
 
----
 
 ### 5.4 Deposit Money
 
@@ -133,7 +125,6 @@ The system:
 4. Creates a transaction record.
 5. Displays the updated balance.
 
----
 
 ### 5.5 Withdraw Money
 
@@ -147,7 +138,6 @@ Before completing the transaction, the system checks:
 
 If sufficient balance is available, the account balance is reduced and a transaction record is created.
 
----
 
 ### 5.6 Fund Transfer
 
@@ -163,7 +153,6 @@ The system verifies:
 
 After successful validation, the amount is deducted from the sender and added to the receiver.
 
----
 
 ### 5.7 Transaction History
 
@@ -179,7 +168,6 @@ Each transaction contains:
 
 Users can enter an account number to view its recorded transactions.
 
----
 
 ### 5.8 Display All Accounts
 
@@ -187,7 +175,6 @@ The system provides an option to display all accounts currently stored in the ap
 
 This allows the user to view the complete account information available during the current program execution.
 
----
 
 # 6. Object-Oriented Design
 
@@ -205,7 +192,6 @@ The project uses three major classes:
        Customer Data  Account Data  Transaction Data
 ````
 
----
 
 # 7. Customer Class
 
@@ -238,7 +224,6 @@ Displays customer information.
 
 The Customer class separates customer-related information from account and transaction data.
 
----
 
 # 8. Account Class
 
@@ -284,7 +269,6 @@ Removes a specified amount after checking whether the withdrawal is valid.
 
 Displays the account information.
 
----
 
 # 9. Transaction Class
 
@@ -314,7 +298,6 @@ Returns the account number associated with the transaction.
 
 The Transaction class provides a structured way to maintain records of deposits, withdrawals, and transfers.
 
----
 
 # 10. Data Management
 
@@ -332,7 +315,6 @@ These collections allow the program to store multiple objects during program exe
 
 The C++ `vector` container is designed as a dynamically sized sequence container, making it suitable for maintaining a collection whose number of elements can grow during execution.
 
----
 
 # 11. Helper Functions
 
@@ -350,7 +332,6 @@ If the customer does not exist, the function returns:
 -1
 ```
 
----
 
 ## `findAccountIndex()`
 
@@ -366,7 +347,6 @@ If the account does not exist, the function returns:
 
 These functions reduce repeated searching logic throughout the program.
 
----
 
 # 12. Customer Creation Workflow
 
@@ -390,7 +370,6 @@ Display Success Message
 
 If the entered Customer ID already exists, the system stops the operation and displays an error message.
 
----
 
 # 13. Account Creation Workflow
 
@@ -418,8 +397,6 @@ Display Success Message
 
 An account cannot be created for a customer who does not exist.
 
----
-
 # 14. Deposit Algorithm
 
 The deposit operation follows this algorithm:
@@ -441,7 +418,6 @@ The balance is updated using:
 New Balance = Current Balance + Deposit Amount
 ```
 
----
 
 # 15. Withdrawal Algorithm
 
@@ -465,7 +441,6 @@ The balance is updated using:
 New Balance = Current Balance - Withdrawal Amount
 ```
 
----
 
 # 16. Fund Transfer Algorithm
 
@@ -497,7 +472,6 @@ Receiver Balance
 = Receiver Balance + Transfer Amount
 ```
 
----
 
 # 17. Transaction Recording
 
@@ -515,7 +489,6 @@ Description    : Cash deposited
 
 For a transfer, records are created for both the sending and receiving account so that the transaction history can be viewed for either account.
 
----
 
 # 18. Input Validation
 
@@ -531,8 +504,6 @@ If Customer ID exists
         v
 Display "Customer ID already exists"
 ```
-
----
 
 ## Account Validation
 
@@ -570,7 +541,6 @@ and
 Amount <= Current Balance
 ```
 
----
 
 ## Transfer Validation
 
@@ -588,7 +558,6 @@ Amount > 0
 Amount <= Sender Balance
 ```
 
----
 
 # 19. Main Menu
 
@@ -615,7 +584,6 @@ The user selects an operation by entering the corresponding menu number.
 
 The `switch` statement then calls the appropriate function.
 
----
 
 # 20. Complete System Workflow
 
@@ -660,7 +628,6 @@ The overall system workflow is:
                    Exit
 ```
 
----
 
 # 21. Sample Data
 
@@ -702,7 +669,6 @@ Initial Balance: Rs. 15000
 
 These accounts are included to demonstrate banking operations immediately when the program starts.
 
----
 
 # 22. Sample Deposit Operation
 
@@ -731,7 +697,6 @@ After depositing:
 Rs. 10000 + Rs. 5000 = Rs. 15000
 ```
 
----
 
 # 23. Sample Withdrawal Operation
 
@@ -750,7 +715,6 @@ Remaining Balance: Rs. 13000.00
 
 The balance is reduced after successful withdrawal.
 
----
 
 # 24. Sample Fund Transfer
 
@@ -773,7 +737,6 @@ Sender New Balance : Rs. 10000.00
 
 The sender's account is reduced by the transfer amount and the receiver's account is increased by the same amount.
 
----
 
 # 25. Sample Transaction History
 
@@ -793,7 +756,6 @@ ID        TYPE           ACCOUNT        AMOUNT         DESCRIPTION
 
 The transaction history provides a record of successful operations associated with the selected account.
 
----
 
 # 26. Error Handling
 
@@ -839,7 +801,6 @@ Invalid transfer amount!
 
 These checks prevent invalid banking operations from being processed.
 
----
 
 # 27. Technologies Used
 
@@ -875,7 +836,6 @@ The program uses standard C++ input/output facilities, formatting utilities, str
 * Input validation
 * Menu-driven programming
 
----
 
 # 28. Project Structure
 
@@ -898,39 +858,10 @@ Task4_Banking_System/
     └── project_report.md
 ```
 
----
 
-# 29. Compilation and Execution
 
-The project can be compiled using a C++ compiler such as g++.
 
-Navigate to the Task 4 directory:
-
-```bash
-cd Task4_Banking_System
-```
-
-Compile:
-
-```bash
-g++ src/main.cpp -o BankingSystem
-```
-
-On Windows:
-
-```bash
-BankingSystem.exe
-```
-
-On Linux/macOS:
-
-```bash
-./BankingSystem
-```
-
----
-
-# 30. Testing
+# 29. Testing
 
 The application should be tested using different normal and invalid scenarios.
 
@@ -958,7 +889,7 @@ The application should be tested using different normal and invalid scenarios.
 
 ---
 
-# 31. Advantages of the System
+# 30. Advantages of the System
 
 The project provides several benefits as a learning-oriented banking simulation:
 
@@ -974,7 +905,7 @@ The project provides several benefits as a learning-oriented banking simulation:
 
 ---
 
-# 32. Limitations
+# 31. Limitations
 
 The current version is designed as an internship-level console application and therefore has some limitations.
 
@@ -1000,7 +931,7 @@ This project is a programming simulation and does not connect to real banking sy
 
 ---
 
-# 33. Future Scope
+# 32. Future Scope
 
 The project can be expanded with:
 
@@ -1038,7 +969,7 @@ The system could generate detailed account statements based on transaction histo
 
 ---
 
-# 34. Learning Outcomes
+# 33. Learning Outcomes
 
 This project provides practical experience with:
 
@@ -1060,7 +991,7 @@ The project also demonstrates how programming concepts can be combined to create
 
 ---
 
-# 35. Conclusion
+# 34. Conclusion
 
 The Banking Management System successfully demonstrates the implementation of a simplified banking application using C++.
 
@@ -1072,7 +1003,7 @@ Through this project, important C++ and Object-Oriented Programming concepts are
 
 ---
 
-# 36. Author
+# 35. Author
 
 **Preeti Choure**
 
@@ -1082,15 +1013,10 @@ Through this project, important C++ and Object-Oriented Programming concepts are
 
 ---
 
-# 37. Acknowledgement
+# 36. Acknowledgement
 
 This project was developed as part of the CodeAlpha C++ Programming Internship.
 
 The project provided an opportunity to apply C++ programming and Object-Oriented Programming concepts to a practical Banking Management System.
 
 ````
-
-
-
-[1]: https://en.cppreference.com/cpp/standard_library?utm_source=chatgpt.com "C++ Standard Library - cppreference.com"
-
