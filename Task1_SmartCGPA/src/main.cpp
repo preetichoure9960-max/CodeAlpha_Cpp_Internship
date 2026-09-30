@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 #include <limits>
-#include <algorithm>
 
 using namespace std;
 
@@ -15,37 +14,66 @@ struct Course
     double gradePoint;
 };
 
+// Converts grade into grade point
 double getGradePoint(string grade)
 {
-    if (grade == "A+" || grade == "a+") return 10.0;
-    if (grade == "A"  || grade == "a")  return 9.0;
-    if (grade == "B+" || grade == "b+") return 8.0;
-    if (grade == "B"  || grade == "b")  return 7.0;
-    if (grade == "C+" || grade == "c+") return 6.0;
-    if (grade == "C"  || grade == "c")  return 5.0;
-    if (grade == "D"  || grade == "d")  return 4.0;
-    if (grade == "F"  || grade == "f")  return 0.0;
+    if (grade == "A+" || grade == "a+")
+        return 10.0;
+    else if (grade == "A" || grade == "a")
+        return 9.0;
+    else if (grade == "B+" || grade == "b+")
+        return 8.0;
+    else if (grade == "B" || grade == "b")
+        return 7.0;
+    else if (grade == "C+" || grade == "c+")
+        return 6.0;
+    else if (grade == "C" || grade == "c")
+        return 5.0;
+    else if (grade == "D" || grade == "d")
+        return 4.0;
+    else if (grade == "F" || grade == "f")
+        return 0.0;
 
     return -1.0;
 }
 
-string getPerformance(double cgpa)
+// Returns performance based on GPA
+string getPerformance(double gpa)
 {
-    if (cgpa >= 9.0)
+    if (gpa >= 9.0)
         return "Outstanding";
-    else if (cgpa >= 8.0)
+    else if (gpa >= 8.0)
         return "Excellent";
-    else if (cgpa >= 7.0)
+    else if (gpa >= 7.0)
         return "Very Good";
-    else if (cgpa >= 6.0)
+    else if (gpa >= 6.0)
         return "Good";
-    else if (cgpa >= 5.0)
+    else if (gpa >= 5.0)
         return "Average";
     else
         return "Needs Improvement";
 }
 
-void displayCourseTable(const vector<Course>& courses)
+// Calculates GPA using credit-weighted grade points
+double calculateGPA(const vector<Course>& courses)
+{
+    double totalCredits = 0;
+    double totalGradePoints = 0;
+
+    for (const Course& course : courses)
+    {
+        totalCredits += course.credit;
+        totalGradePoints += course.credit * course.gradePoint;
+    }
+
+    if (totalCredits == 0)
+        return 0;
+
+    return totalGradePoints / totalCredits;
+}
+
+// Displays course-wise result
+void displayResult(const vector<Course>& courses)
 {
     cout << "\n";
     cout << left
@@ -68,24 +96,8 @@ void displayCourseTable(const vector<Course>& courses)
     }
 }
 
-double calculateGPA(const vector<Course>& courses)
-{
-    double totalCredits = 0;
-    double totalPoints = 0;
-
-    for (const Course& course : courses)
-    {
-        totalCredits += course.credit;
-        totalPoints += course.credit * course.gradePoint;
-    }
-
-    if (totalCredits == 0)
-        return 0;
-
-    return totalPoints / totalCredits;
-}
-
-void calculateCGPA()
+// Main GPA calculation
+void calculateGPA()
 {
     int numberOfCourses;
 
@@ -153,22 +165,61 @@ void calculateCGPA()
     cout << "\n          ACADEMIC REPORT";
     cout << "\n========================================\n";
 
-    displayCourseTable(courses);
+    displayResult(courses);
+
+    cout << fixed << setprecision(2);
 
     cout << "\nTotal Credits : " << totalCredits;
-    cout << fixed << setprecision(2);
     cout << "\nFinal GPA     : " << gpa;
     cout << "\nPerformance   : " << getPerformance(gpa);
 
     cout << "\n========================================\n";
 }
 
-void performanceAnalysis(const vector<Course>& courses)
+// Shows highest and lowest performing subjects
+void performanceAnalysis()
 {
-    if (courses.empty())
+    int numberOfCourses;
+
+    cout << "\nEnter number of courses: ";
+    cin >> numberOfCourses;
+
+    if (numberOfCourses <= 0)
     {
-        cout << "\nNo course data available.\n";
+        cout << "Invalid number of courses.\n";
         return;
+    }
+
+    vector<Course> courses;
+
+    for (int i = 0; i < numberOfCourses; i++)
+    {
+        Course course;
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        cout << "\nCourse " << i + 1 << endl;
+
+        cout << "Enter course name: ";
+        getline(cin, course.name);
+
+        cout << "Enter credit hours: ";
+        cin >> course.credit;
+
+        cout << "Enter grade: ";
+        cin >> course.grade;
+
+        course.gradePoint = getGradePoint(course.grade);
+
+        while (course.gradePoint == -1)
+        {
+            cout << "Invalid grade. Enter again: ";
+            cin >> course.grade;
+
+            course.gradePoint = getGradePoint(course.grade);
+        }
+
+        courses.push_back(course);
     }
 
     int highest = 0;
@@ -205,15 +256,16 @@ void performanceAnalysis(const vector<Course>& courses)
     cout << "\n========================================\n";
 }
 
+// Calculates GPA required to reach a target CGPA
 void targetCGPA()
 {
     double currentCGPA;
     double completedCredits;
-    double nextCredits;
-    double target;
+    double nextSemesterCredits;
+    double targetCGPA;
 
     cout << "\n========================================";
-    cout << "\n         TARGET CGPA CALCULATOR";
+    cout << "\n       TARGET CGPA CALCULATOR";
     cout << "\n========================================\n";
 
     cout << "Enter current CGPA: ";
@@ -222,29 +274,28 @@ void targetCGPA()
     cout << "Enter completed credits: ";
     cin >> completedCredits;
 
-    cout << "Enter credits for next semester: ";
-    cin >> nextCredits;
+    cout << "Enter next semester credits: ";
+    cin >> nextSemesterCredits;
 
     cout << "Enter desired CGPA: ";
-    cin >> target;
+    cin >> targetCGPA;
 
-    if (nextCredits <= 0 || completedCredits < 0)
+    if (completedCredits < 0 || nextSemesterCredits <= 0)
     {
         cout << "\nInvalid credit values.\n";
         return;
     }
 
     double requiredGPA =
-        ((target * (completedCredits + nextCredits))
+        ((targetCGPA * (completedCredits + nextSemesterCredits))
         - (currentCGPA * completedCredits))
-        / nextCredits;
+        / nextSemesterCredits;
 
     cout << fixed << setprecision(2);
 
     if (requiredGPA > 10)
     {
-        cout << "\nTarget CGPA cannot be achieved in one semester";
-        cout << " with a maximum GPA of 10.\n";
+        cout << "\nThe target CGPA cannot be achieved in one semester.\n";
     }
     else if (requiredGPA <= 0)
     {
@@ -261,8 +312,6 @@ void targetCGPA()
 
 int main()
 {
-    vector<Course> courses;
-
     int choice;
 
     do
@@ -272,8 +321,8 @@ int main()
         cout << "\n========================================";
 
         cout << "\n1. Calculate GPA";
-        cout << "\n2. View Performance Analysis";
-        cout << "\n3. Calculate Target CGPA";
+        cout << "\n2. Performance Analysis";
+        cout << "\n3. Target CGPA Calculator";
         cout << "\n4. Exit";
 
         cout << "\n\nEnter your choice: ";
@@ -282,98 +331,11 @@ int main()
         switch (choice)
         {
             case 1:
-            {
-                int numberOfCourses;
-
-                cout << "\nEnter number of courses: ";
-                cin >> numberOfCourses;
-
-                while (cin.fail() || numberOfCourses <= 0)
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-                    cout << "Enter a valid number of courses: ";
-                    cin >> numberOfCourses;
-                }
-
-                courses.clear();
-
-                for (int i = 0; i < numberOfCourses; i++)
-                {
-                    Course course;
-
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-                    cout << "\nCourse " << i + 1 << endl;
-
-                    cout << "Course name: ";
-                    getline(cin, course.name);
-
-                    cout << "Credit hours: ";
-                    cin >> course.credit;
-
-                    while (cin.fail() || course.credit <= 0)
-                    {
-                        cin.clear();
-                        cin.ignore(
-                            numeric_limits<streamsize>::max(),
-                            '\n'
-                        );
-
-                        cout << "Enter valid credit hours: ";
-                        cin >> course.credit;
-                    }
-
-                    cout << "Grade: ";
-                    cin >> course.grade;
-
-                    course.gradePoint =
-                        getGradePoint(course.grade);
-
-                    while (course.gradePoint == -1)
-                    {
-                        cout << "Invalid grade. Enter again: ";
-                        cin >> course.grade;
-
-                        course.gradePoint =
-                            getGradePoint(course.grade);
-                    }
-
-                    courses.push_back(course);
-                }
-
-                double gpa = calculateGPA(courses);
-
-                cout << "\n\n========================================";
-                cout << "\n          ACADEMIC REPORT";
-                cout << "\n========================================\n";
-
-                displayCourseTable(courses);
-
-                double totalCredits = 0;
-
-                for (const Course& course : courses)
-                    totalCredits += course.credit;
-
-                cout << fixed << setprecision(2);
-
-                cout << "\nTotal Credits : "
-                     << totalCredits;
-
-                cout << "\nFinal GPA     : "
-                     << gpa;
-
-                cout << "\nPerformance   : "
-                     << getPerformance(gpa);
-
-                cout << "\n========================================\n";
-
+                calculateGPA();
                 break;
-            }
 
             case 2:
-                performanceAnalysis(courses);
+                performanceAnalysis();
                 break;
 
             case 3:
