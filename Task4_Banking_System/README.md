@@ -1,16 +1,5 @@
-Great. Now let's do **FILE 2 — `README.md`** for Task 4.
 
-Create this file here:
 
-```text
-CodeAlpha_Cpp_Internship/
-└── Task4_Banking_System/
-    └── README.md
-```
-
-Paste **exactly this** into `README.md`:
-
-````markdown
 # 🏦 Banking Management System
 
 A console-based Banking Management System developed in C++ as part of the **CodeAlpha C++ Programming Internship – Task 4**.
@@ -491,23 +480,4 @@ This project was developed as part of the **CodeAlpha C++ Programming Internship
 
 ````
 
-### ✅ After pasting
-
-Your Task 4 should now look like:
-
-Task4_Banking_System/
-│
-├── README.md          ✅ DONE
-│
-├── src/
-│   └── main.cpp       ✅ DONE
-│
-├── screenshots/
-│   └── (empty for now)
-│
-└── docs/
-    └── (empty for now)
-````
-
-**Next is FILE 3: `docs/project_report.md`** — this will be the detailed documentation/report, so it will be longer than the README and will explain the project, classes, workflow, algorithms, validation, testing, learning outcomes, and conclusion.
 
