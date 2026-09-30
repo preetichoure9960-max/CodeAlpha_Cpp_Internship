@@ -256,43 +256,6 @@ Task4_Banking_System/
     └── project_report.md
 ```
 
----
-
-## ⚙️ How to Run
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/YOUR-USERNAME/CodeAlpha_Cpp_Internship.git
-```
-
-### 2. Navigate to the Project
-
-```bash
-cd CodeAlpha_Cpp_Internship/Task4_Banking_System
-```
-
-### 3. Compile the Program
-
-```bash
-g++ src/main.cpp -o BankingSystem
-```
-
-### 4. Run the Program
-
-#### Windows
-
-```bash
-BankingSystem.exe
-```
-
-#### Linux / macOS
-
-```bash
-./BankingSystem
-```
-
----
 
 ## 🖥️ Application Menu
 
@@ -479,5 +442,3 @@ docs/project_report.md
 This project was developed as part of the **CodeAlpha C++ Programming Internship** to apply C++ programming and Object-Oriented Programming concepts to a practical banking management system.
 
 ````
-
-
